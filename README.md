@@ -11,7 +11,9 @@ A modern, AI-powered website for Dr. Yuki Okada's veterinary nutrition consultat
 - **Professional Bio**: Comprehensive information about Dr. Okada's credentials and expertise
 
 ### 🤖 AI Integration
-- **ElevenLabs Agent**: Ready for integration with agent ID: `agent_01jz667k14eq29kxw3b0mxmjn9`
+- **ElevenLabs Agent**: Fully integrated with agent ID: `agent_01jz667k14eq29kxw3b0mxmjn9`
+- **Voice Input**: Speech-to-text for hands-free consultation
+- **Voice Output**: Text-to-speech responses using ElevenLabs TTS
 - **PDF Analysis**: Automated case record processing and summarization
 - **Smart Responses**: Context-aware nutritional guidance based on user queries
 
@@ -92,27 +94,26 @@ A modern, AI-powered website for Dr. Yuki Okada's veterinary nutrition consultat
 ## Configuration
 
 ### ElevenLabs Integration
-To enable the AI consultant functionality:
+The AI consultant is now fully integrated with ElevenLabs! Here's how to set it up:
 
-1. **Set up API endpoint** in `components/AIConsultant.tsx`:
-   ```typescript
-   const response = await fetch('/api/elevenlabs-chat', {
-     method: 'POST',
-     headers: { 'Content-Type': 'application/json' },
-     body: JSON.stringify({ 
-       message: inputText,
-       agentId: 'agent_01jz667k14eq29kxw3b0mxmjn9'
-     })
-   })
+1. **Get your ElevenLabs API key**:
+   - Sign up at [elevenlabs.io](https://elevenlabs.io/)
+   - Go to your profile and copy your API key
+
+2. **Set environment variables**:
+   ```bash
+   # Create .env.local file
+   cp env.example .env.local
+   
+   # Edit .env.local and add your API key
+   ELEVENLABS_API_KEY=your_actual_api_key_here
    ```
 
-2. **Create API route** in `app/api/elevenlabs-chat/route.ts`:
-   ```typescript
-   export async function POST(request: Request) {
-     // Implement ElevenLabs API integration
-     // Handle authentication and agent communication
-   }
-   ```
+3. **Features included**:
+   - ✅ **Voice Input**: Click the microphone button to speak
+   - ✅ **Voice Output**: AI responses are converted to speech
+   - ✅ **Agent Integration**: Connects to Dr. Okada's AI agent
+   - ✅ **Fallback System**: Works even if API is unavailable
 
 ### PDF Processing
 For production PDF analysis:
